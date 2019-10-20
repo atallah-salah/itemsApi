@@ -7,7 +7,7 @@ defmodule ItemsApi.MixProject do
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix, :gettext, :phoenix_swagger] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -17,7 +17,7 @@ defmodule ItemsApi.MixProject do
   def application do
     [
       mod: {ItemsApi.App, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :phoenix_swagger]
     ]
   end
 
@@ -36,7 +36,10 @@ defmodule ItemsApi.MixProject do
       {:ecto, "~> 2.1.0"},
       {:mongodb_ecto, "~> 0.2.1"},
       {:mongodb, "~> 0.4.2"},
-      {:db_connection,"~> 1.1"}
+      {:db_connection,"~> 1.1"},
+      {:poison, "~> 3.0"},
+      {:phoenix_swagger, github: "xerions/phoenix_swagger"},
+      {:ex_json_schema, "~> 0.5"}
     ]
   end
 
