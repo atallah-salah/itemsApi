@@ -18,6 +18,12 @@ defmodule ItemsApiWeb.Router do
     post "/items", ItemController, :insert_item
     put "/items/:id", ItemController, :update_item
     delete "/items/:id", ItemController, :delete_item
+
+    resources "/items", ItemsController
+  end
+
+  scope "/", ItemsApiWeb do
+
   end
 
   def swagger_info do
