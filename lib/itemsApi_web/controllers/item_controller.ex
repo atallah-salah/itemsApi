@@ -33,6 +33,7 @@ defmodule ItemsApiWeb.ItemController do
     result = from(item in Items, where: item."_id" == ^id, update: [set: [title: ^title],set: [description: ^description]])
     |> ItemsApi.Repo.update_all([])
 
+    # get updated item
     query = from item in Items, where: item."_id" == ^id, select: item
     item = ItemsApi.Repo.one(query)
 
@@ -43,6 +44,7 @@ defmodule ItemsApiWeb.ItemController do
     result = from(item in Items, where: item."_id" == ^id, update: [set: [is_deleted: true]])
     |> ItemsApi.Repo.update_all([])
 
+    # get deleted item
     query = from item in Items, where: item."_id" == ^id, select: item
     item = ItemsApi.Repo.one(query)
 
